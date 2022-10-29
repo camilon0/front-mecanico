@@ -1,0 +1,172 @@
+﻿@page
+@model VehiculoCRUD
+@{
+}
+
+<div class="clas-contain-title">
+    <h6 class="mb-0 me-3">Vehiculos</h6>
+    <i class="bi bi-person-plus clas-icon-add" title="Agregar Vehiculo" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" data-bs-whatever="@@mdo"></i>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Capacidad</th>
+			<th scope="col">Cilindraje</th>
+			<th scope="col">Pais</th>
+            <th scope="col">Descripcion</th>
+			
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var m in Model.listaVehiculos)
+        {
+            <tr>
+                <td>@m.vehiculoid</td>
+                <td>@m.placa</td>
+                <td>@m.tipo</td> 
+                <td>@m.marca</td> 
+                <td>@m.modelo</td> 
+                <td>@m.capacidad</td>  
+				<td>@m.cilindraje</td>  
+				<td>@m.pais</td>  
+                <td>@m.descripcion</td>  
+                <td class="text-end" style="display: flex; justify-content: flex-end;">
+
+                    @if (@Model.VehiculoActual != null && @Model.VehiculoActual.vehiculoid != "")
+                    {
+
+                        <button class="bi bi-pencil-square class-icon-edit clas-no-sty-button" title="Editar Vehiculo"
+                    id="idmodal" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@@mdo"></button>
+                    }
+                    else
+                    {
+                        <form method="POST">
+
+                            <button class="bi bi-pencil-square class-icon-edit clas-no-sty-button" title="Editar Vehiculo"
+                        type="submit" asp-route-id="@m.vehiculoid" asp-page-handler="SelectEdit"></button>
+                        </form>
+
+                    }
+
+                    <form method="POST">
+                        <button class="bi bi-trash-fill class-icon-delete clas-no-sty-button" title="Eliminar Vehiculo"
+                        type="submit" asp-route-id="@m.vehiculoid" asp-page-handler="Del"></button>
+                    </form>
+
+
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                @if (@Model.modeEdition)
+                {
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Vehiculo</h5>
+                }
+                else
+                {
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Vehiculo</h5>
+                }
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-4" method="POST">
+
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Id:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.vehiculoid" name="vehiculoid">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Placa:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.placa" name="placa">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label"> Tipo:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.tipo" name="tipo">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Marca:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.marca" name="marca">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">modelo:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.modelo" name="modelo">
+                        </div>
+
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Capacidad:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.capacidad" name="capacidad">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Cilindraje:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.cilindraje" name="cilindraje">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Pais:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.pais" name="pais">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="recipient-name" class="col-form-label">Descripcion:</label>
+                            <input type="text" class="form-control" id="recipient-name"
+                                asp-for="@Model.VehiculoActual.descripcion" name="descripcion">
+                        </div>
+                    </div> 
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        @if (@Model.modeEdition)
+                        {
+                            <button type="submit" class="btn btn-primary" asp-page-handler="Edit">Editar</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary" asp-page-handler="Add">Agregar</button>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

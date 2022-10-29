@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card body">
+          <div class="col">
+              <div class="lbl_SaludoJefeOp">
+                  <h1>!Bienvenido Jefe de Operaciones!</h1> 
+                  <h1>¿Qué desea hacer hoy?</h1>
+              </div> 
+              
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col">
+              <div class="btn_Registrar_Carro">
+                  <div class="btn_RegistrarCarro">¿Desea ingresar la información de un mecánico?
+                      <button type="button" class="btn btn-text-dark" asp-area="" asp-page="/BuenTrabajoAngeles/Mecanico/MecanicoCRUD">Registrar</button>
+                  <a class="nav-link text-dark" asp-area="" asp-page="/Propietario/Registros/PropietarioRegistroCarro">Registrar datos de un mecánico</a>
+              </div>
+          
+      
+          <div class="col">
+              <div class="btn_Registrar_Usuairo">
+                  <div class="btn_RegistrarUsuario">¿Desea ingresar la informacion de un propietario?
+                  <a class="nav-link text-dark" asp-area="" asp-page="/Propietario/Registros/PropietarioRegistro">Registrar datos propietario</a>
+              </div>
+          </div>
+      
+          <div class="row">
+          <div class="col">
+              <div class="btn_Registrar_Mecanico">
+                  <div class="btn_RegistrarMecanico">¿Desea ingresar la informacion de un mecanico?
+                  <a class="nav-link text-dark" asp-area="" asp-page="/JefeOperaciones/Registros/JefeOpRegistroMecanico">Registrar datos mecanico</a>
+              </div>
+          </div>
+      
+          <div class="row">
+          <div class="col">
+              <div class="btn_Consultar_Carro_General">
+                  <div class="btn_ConsultaGeneralCarro">¿Desea consultar la informacion general de un carro?
+                      <div class="txt_Placa_General">
+                      <input type="text" required>
+                      <label>Ingrese la placa por favor</label>
+                      
+                  </div>
+                  <a class="nav-link text-dark" asp-area="" asp-page="/JefeOperaciones/Consultas/JefeOpConsultaCarroGeneral">Consulta General Carro</a>
+      
+                  
+              </div>
+          </div>
+      
+          <div class="row">
+          <div class="col">
+              <div class="btn_Consultar_Carro_Extensa">
+                  <div class="btn_ConsultaExtensaCarro">¿Desea Consultar  la informacion completa de un carro?
+                      <div class="txt_Placa_Ext">
+                      <input type="text" required>
+                      <label>Ingrese la placa por favor</label>
+                  </div>
+                  <a class="nav-link text-dark" asp-area="" asp-page="/JefeOperaciones/Consultas/JefeOpConsultaCarroExtendido">Consulta Extensa Carro</a>
+              </div>
+          </div>
+      
+</body>
+</html>
